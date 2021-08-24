@@ -1,0 +1,23 @@
+---
+# Taches pour l'installation et la configuration de strongswan
+
+- name: Verification du systeme d'exploitation
+  include: prerequis.yml
+  when: "ipsec_server_check_os"
+
+- name: Installation de Strongswan
+  include: apt.yml 
+  when: "ipsec_server_install_packages"
+  
+- name: Configuration de Ipsec
+  include: ipsec.yml
+
+- name: Congiguration de sysctl
+  include: sysctl.yml
+  when: "ipsec_server_enable_forwarding"
+
+- name: Congiguration d' iptables
+  include: iptables.yml
+  when: "ipsec_server_nat_masquerade"
+
+

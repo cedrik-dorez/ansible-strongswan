@@ -1,0 +1,22 @@
+---
+
+# Configuration du role Strongswan
+ipsec_server_check_os: True
+ipsec_server_install_packages: True
+ipsec_server_enable_forwarding: True
+ipsec_server_nat_masquerade: True
+
+# Configuration de connexion ikev2 par defaut
+ipsec_server_ikelifetime: "60m"
+ipsec_server_keylife: "20m"
+ipsec_server_rekeymargin: "3m"
+ipsec_server_keyingtries: "3"
+
+# Configuration de detection de connexion en suspens
+ipsec_server_dpddelay: "60s"
+ipsec_server_dpdtimeout: "240s"
+ipsec_server_dpdaction: "hold"
+
+# Configuration interface pour la tache Iptables 
+ipsec_server_external_interface: "enp0s3"
+

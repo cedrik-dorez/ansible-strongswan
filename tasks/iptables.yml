@@ -1,0 +1,9 @@
+---
+
+- name: Traduction d'adresses - NAT
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: "{{ ipsec_server_external_interface }}"
+    source: "{{ ansible_enp0s8.ipv4.network }}/24"
+    jump: MASQUERADE

@@ -1,0 +1,7 @@
+---
+
+- name: Installation de strongSwan
+  apt:
+    name: strongswan
+    state: present
+    update_cache: yes

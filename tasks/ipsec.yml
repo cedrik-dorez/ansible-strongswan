@@ -1,0 +1,22 @@
+---
+
+- name: Configuration de ipsec.conf
+  template:
+    src: ipsec.conf.j2
+    dest: /etc/ipsec.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart strongswan
+
+- name: Configuration de ipsec.secrets
+  template:
+    src: ipsec.secrets.j2
+    dest: /etc/ipsec.secrets
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart strongswan
+
+
+
