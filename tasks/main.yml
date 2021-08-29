@@ -3,21 +3,22 @@
 
 - name: Verification du systeme d'exploitation
   include: prerequis.yml
-  when: "ipsec_server_check_os"
+  when: "ipsec_vpn_check_os"
 
 - name: Installation de Strongswan
   include: apt.yml 
-  when: "ipsec_server_install_packages"
-  
-- name: Configuration de Ipsec
-  include: ipsec.yml
+  when: "ipsec_vpn_install_packages"
 
-- name: Congiguration de sysctl
-  include: sysctl.yml
-  when: "ipsec_server_enable_forwarding"
-
-- name: Congiguration d' iptables
+- name: Configuration d' iptables
   include: iptables.yml
-  when: "ipsec_server_nat_masquerade"
+  when: "ipsec_vpn_nat_masquerade"
+
+- name: Mise en place du tunnel ipsec
+  include: ipsec.yml
+  
+- name: Configuration de sysctl
+  include: sysctl.yml
+  when: "ipsec_vpn_enable_forwarding"
+
 
 
