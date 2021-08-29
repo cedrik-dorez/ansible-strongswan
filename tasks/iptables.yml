@@ -1,13 +1,10 @@
 ---
 
-- name: Vidage des regles NAT et filter   
+- name: Vidage de la table NAT    
   iptables:
-    table: "{{ item }}" 
+    table: nat 
     flush: yes
-  with_items:
-    - nat
-    - filter
- 
+   
 - name: Traduction d'adresses - NAT
   iptables:
     table: nat
@@ -18,13 +15,9 @@
 
 - name: Regle de suivi des connections persistantes
   iptables:
-    chain: "{{ item }}"
+    chain: FORWARD
     ctstate: ESTABLISHED,RELATED
     jump: ACCEPT
-  with_items:
-    - INPUT
-    - FORWARD
-    - OUTPUT
-
-- name: Sauvegarde des regles NAT 
+  
+- name: Sauvegarde de la table NAT 
   shell: iptables-save > /etc/iptables/rules.v4
