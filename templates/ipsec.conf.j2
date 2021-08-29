@@ -24,7 +24,6 @@ conn {{ hostvars[host].ansible_hostname }}
  esp=aes128-sha1,3des-sha1
 
  left={{ ansible_enp0s3.ipv4.address }}
- leftfirewall=yes
  leftsubnet={{ ansible_enp0s8.ipv4.network }}/24
  leftid={{ ansible_enp0s3.ipv4.address }}
 
