@@ -1,13 +1,11 @@
 ---
 
-- name: Activation du routage et désactivation de la découverte de reseau PMTU
+- name: Activation du routage 
   sysctl:
-    name: "{{ item }}"
+    name: net.ipv4.ip_forward
     value: 1
     sysctl_set: yes
     state: present
     reload: yes
-  with_items:
-    - net.ipv4.ip_forward
-    - net.ipv4.ip_no_pmtu_disc
+  
     
