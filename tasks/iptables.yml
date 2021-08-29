@@ -1,9 +1,30 @@
 ---
 
+- name: Vidage des regles NAT et filter   
+  iptables:
+    table: "{{ item }}" 
+    flush: yes
+  with_items:
+    - nat
+    - filter
+ 
 - name: Traduction d'adresses - NAT
   iptables:
     table: nat
     chain: POSTROUTING
-    out_interface: "{{ ipsec_server_external_interface }}"
+    out_interface: " enp0s3 "
     source: "{{ ansible_enp0s8.ipv4.network }}/24"
     jump: MASQUERADE
+
+- name: Regle de suivi des connections persistantes
+  iptables:
+    chain: "{{ item }}"
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+  with_items:
+    - INPUT
+    - FORWARD
+    - OUTPUT
+
+- name: Sauvegarde des regles NAT 
+  shell: iptables-save > /etc/iptables/rules.v4
