@@ -5,10 +5,10 @@
 config setup
 
 conn %default
- ikelifetime={{ ipsec_server_ikelifetime }}
- keylife={{ ipsec_server_keylife }}
- rekeymargin={{ ipsec_server_rekeymargin }}
- keyingtries={{ ipsec_server_keyingtries }}
+ ikelifetime={{ ipsec_vpn_ikelifetime }}
+ keylife={{ ipsec_vpn_keylife }}
+ rekeymargin={{ ipsec_vpn_rekeymargin }}
+ keyingtries={{ ipsec_vpn_keyingtries }}
  keyexchange=ikev2
  authby=secret
 
@@ -32,9 +32,9 @@ conn {{ hostvars[host].ansible_hostname }}
  rightsubnet={{ hostvars[host].ansible_enp0s8.ipv4.network }}/24
  rightid={{ hostvars[host].ansible_enp0s3.ipv4.address }}
 
- dpddelay={{ ipsec_server_dpddelay }}
- dpdtimeout={{ ipsec_server_dpdtimeout }}
- dpdaction={{ ipsec_server_dpdaction }}
+ dpddelay={{ ipsec_vpn_dpddelay }}
+ dpdtimeout={{ ipsec_vpn_dpdtimeout }}
+ dpdaction={{ ipsec_vpn_dpdaction }}
  keyexchange=ikev2
  auto=start
 
