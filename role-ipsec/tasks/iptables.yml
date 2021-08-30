@@ -1,17 +1,21 @@
 ---
 
-- name: Vidage de la table NAT    
+- name: Vidage des table NAT et filters   
   iptables:
-    table: nat 
+    table: "{{ item }}" 
     flush: yes
-   
-- name: Traduction d'adresses - NAT
+  with_items:
+    - nat
+    - filter   
+
+- name: Traduction d'adresses - NAT et protocole ESP
   iptables:
     table: nat
     chain: POSTROUTING
     out_interface: " enp0s3 "
     source: "{{ ansible_enp0s8.ipv4.network }}/24"
     jump: MASQUERADE
+  notify: restart strongswan
 
 - name: Regle de suivi des connections persistantes
   iptables:
@@ -19,5 +23,6 @@
     ctstate: ESTABLISHED,RELATED
     jump: ACCEPT
   
-- name: Sauvegarde de la table NAT 
+- name: Sauvegarde des tables NAT et Filter  
   shell: iptables-save > /etc/iptables/rules.v4
+  
