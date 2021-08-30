@@ -1,0 +1,21 @@
+---
+
+# Configuration du role Strongswan
+ipsec_vpn_check_os: True
+ipsec_vpn_install_packages: True
+ipsec_vpn_enable_forwarding: True
+ipsec_vpn_nat_masquerade: True
+
+# Configuration de connexion ikev2 par defaut
+ipsec_vpn_ikelifetime: "60m"
+ipsec_vpn_keylife: "20m"
+ipsec_vpn_rekeymargin: "3m"
+ipsec_vpn_keyingtries: "3"
+
+# Configuration de detection de connexion en suspens
+ipsec_vpn_dpddelay: "60s"
+ipsec_vpn_dpdtimeout: "240s"
+ipsec_vpn_dpdaction: "hold"
+
+
+

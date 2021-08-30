@@ -1,0 +1,8 @@
+--- 
+  - name: Mon Playbook
+    hosts: ipsecsrv
+    become: yes
+    roles:
+      - ansible-strongswan    
+    
+      

@@ -1,0 +1,7 @@
+all:
+  children:
+    ipsecsrv:
+      hosts:
+        node1:
+        node2:
+        node3:      

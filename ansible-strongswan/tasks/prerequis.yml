@@ -1,0 +1,14 @@
+---
+
+- name: "Vérification des systemes d'exploitations"
+  fail:
+    msg: "Seul Ubuntu et Debian sont supportés"
+  when:
+    ansible_distribution != "Ubuntu" and ansible_distribution != "Debian" 
+
+
+- name: "Vérification de la version des systemes d'exploitation"
+  fail:
+    msg: "Mauvaise version"
+  when:
+    ansible_distribution_release != "buster" and ansible_distribution_release != "focal" 
