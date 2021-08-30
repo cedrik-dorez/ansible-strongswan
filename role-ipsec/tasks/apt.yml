@@ -1,0 +1,10 @@
+---
+
+- name: Installation de strongSwan et de iptables-persistant
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - strongswan
+    - iptables-persistent 
