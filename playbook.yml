@@ -3,6 +3,6 @@
     hosts: ipsecsrv
     become: yes
     roles:
-      - ansible-strongswan    
+      - role-ipsec    
     
       
