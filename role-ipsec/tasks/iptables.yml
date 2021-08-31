@@ -9,7 +9,7 @@
   iptables:
     table: nat
     chain: POSTROUTING
-    out_interface: " enp0s3 "
+    out_interface: "enp0s3"
     source: "{{ ansible_enp0s8.ipv4.network }}/24"
     jump: MASQUERADE
 
