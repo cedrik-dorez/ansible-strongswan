@@ -16,14 +16,13 @@ Variables de role
 Exemple de Playbook
 ----------------
 
-Avec un editeur de texte on creer le fichier playbook.yml puis on lui insere les lignes suisvantes:
+Avec un editeur de texte on creer le fichier playbook.yml puis on lui insere les lignes suivantes:
 
-#--- 
-#  - name: Mon Playbook
-#    hosts: ipsecsrv
-#    become: yes
-#    roles:
-#      - Ansible-strongswan 
+  - name: Mon Playbook
+    hosts: ipsecsrv
+    become: yes
+    roles:
+      - Ansible-strongswan 
 
 On stipule le(s) host(s) sur lequelles sera jouer le playbook ainsi qu'une elevation des droits en root.
 
