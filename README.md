@@ -11,15 +11,42 @@ Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le p
 Variables de role
 -----------------
 
-A venir ^^
+
 
 Exemple de Playbook
 ----------------
 
-ansible-playbook -K -i inventaire.yml playbook.yml 
+On creer les fichiers playbook.yml :
 
-L'option -K stipule le mot de passe SUDO pour avoir des droit utilisateurs elevés, par choix je n'ai pas voulu
-creer un utilisateur SUDO sans mot de passe ( option NOPASSWD dans le fichier /etc/sudoers )
+```
+---
+  - name: Mon Playbook
+    hosts: ipsecsrv
+    become: yes
+    roles:
+      - Ansible-strongswan
+
+```
+et inventaire.yml
+
+```
+all:
+  children:
+    ipsecsrv:
+      hosts:
+        node1:
+        node2:
+        node3:
+```
+
+On stipule ainsi le(s) host(s) sur lequelles sera jouer le playbook.
+
+Puis on utilise la commande ansible-playbook -K --ask-vault-pass -i inventaire.yml playbook.yml.
+
+L'option -K stipule le mot de passe SUDO pour avoir des droit utilisateurs elevés.
+
+L'option --ask-vault-pass est pour donner le mot du passe du vault qui contient notre secret partagé,
+ce dernier etant definis en CLI de la maniere suivante:  
 
 License
 -------
