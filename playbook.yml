@@ -1,8 +1,0 @@
---- 
-  - name: Mon Playbook
-    hosts: ipsecsrv
-    become: yes
-    roles:
-      - role-ipsec    
-    
-      
