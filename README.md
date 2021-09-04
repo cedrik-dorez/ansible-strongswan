@@ -18,22 +18,21 @@ Exemple de Playbook
 
 On creer les fichiers playbook.yml 
 
-* --- 
-*   - name: Mon Playbook
-*    hosts: ipsecsrv
-*    become: yes
-*    roles:
-*      - Ansible-strongswan  
+- name: Mon Playbook
+    hosts: ipsecsrv
+    become: yes
+    roles:
+      - Ansible-strongswan  
 
 et inventaire.yml
 
-*all:
-*  children:
-*    ipsecsrv:
-*      hosts:
-*        node1:
-*        node2:
-*        node3:  
+all:
+  children:
+    ipsecsrv:
+      hosts:
+        node1:
+        node2:
+        node3:  
 
 On stipule ainsi le(s) host(s) sur lequelles sera jouer le playbook.
 
