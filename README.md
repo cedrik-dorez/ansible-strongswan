@@ -16,23 +16,33 @@ Variables de role
 Exemple de Playbook
 ----------------
 
-Avec un editeur de texte on creer le fichier playbook.yml puis on lui insere les lignes suivantes:
+On creer les fichiers playbook.yml 
 
-  - name: Mon Playbook
-    hosts: ipsecsrv
-    become: yes
-    roles:
-      - Ansible-strongswan 
+* --- 
+*   - name: Mon Playbook
+*    hosts: ipsecsrv
+*    become: yes
+*    roles:
+*      - Ansible-strongswan  
 
-On stipule le(s) host(s) sur lequelles sera jouer le playbook ainsi qu'une elevation des droits en root.
+et inventaire.yml
 
-On designe ensuite le nom du roles contenant les différends fichiers YAML.
+*all:
+*  children:
+*    ipsecsrv:
+*      hosts:
+*        node1:
+*        node2:
+*        node3:  
 
-Puis on utilise la commande ansible-playbook -K --ask-vault-pass playbook.yml 
+On stipule ainsi le(s) host(s) sur lequelles sera jouer le playbook.
+
+Puis on utilise la commande ansible-playbook -K --ask-vault-pass -i inventaire.yml playbook.yml.
 
 L'option -K stipule le mot de passe SUDO pour avoir des droit utilisateurs elevés.
 
-L'option --ask-vault-pass est pour donner le mot du passe du vault qui contient notre secret partagé. 
+L'option --ask-vault-pass est pour donner le mot du passe du vault qui contient notre secret partagé,
+ce dernier etant definis en CLI de la maniere suivante:  
 
 License
 -------
