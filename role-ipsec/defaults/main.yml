@@ -17,5 +17,5 @@ ipsec_vpn_dpddelay: "60s"
 ipsec_vpn_dpdtimeout: "240s"
 ipsec_vpn_dpdaction: "hold"
 
-
-
+# Secret ( PSK )  
+ipsec_vpn_psk: "{{ vault_ipsec_vpn_psk }}"

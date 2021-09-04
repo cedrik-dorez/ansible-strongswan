@@ -1,1 +1,2 @@
+ipsec_vpn_psk: "{{ vault_ipsec_vpn_psk }}"
 
