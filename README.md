@@ -11,7 +11,9 @@ Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le p
 Variables de role
 -----------------
 
+Les variables de connections **ipsec_vpn_xxxx** sont déclarer dans le fichier defaut/main.yml et peuvent etre facilement surcharger en ligne de commande ou dans les differents emplacement de variables tes que group/variables.yml ou hosts/variables.yml
 
+Le secret a partager **ipsec_vpn_psk** est 
 
 Exemple de Playbook
 ----------------
