@@ -11,6 +11,9 @@ Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le p
 Variables de role
 -----------------
 
+Les variables de connections **ipsec_vpn_xxxx** sont déclarer dans le fichier defaut/main.yml et peuvent etre facilement surcharger en ligne de commande ou dans les differents emplacements de variables tes que group/variables.yml ou hosts/variables.yml.
+
+Le secret a partager **ipsec_vpn_psk** est declarer dans une variables intermediaire **vault_ipsec_vpn_psk** qui est crypter dans un fichier specifique creer avec la commande ansible-vault, ce fichiers peut etre placer dans les group_vars ou les host_vars.
 
 
 Exemple de Playbook
@@ -45,8 +48,7 @@ Puis on utilise la commande ansible-playbook -K --ask-vault-pass -i inventaire.y
 
 L'option -K stipule le mot de passe SUDO pour avoir des droit utilisateurs elevés.
 
-L'option --ask-vault-pass est pour donner le mot du passe du vault qui contient notre secret partagé,
-ce dernier etant definis en CLI de la maniere suivante:  
+L'option --ask-vault-pass est pour donner le mot du passe du vault qui contient notre secret partagé.
 
 License
 -------
