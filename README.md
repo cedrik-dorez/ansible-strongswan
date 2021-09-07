@@ -23,6 +23,8 @@ On entre ensuite le mot de passe desirer pour le fichier vault ,**il ne s'agit p
 
 Puis a l'interieur du fichier vault creer on declare la variable *vault_ipsec_vpn_psk* avec sa valeur désirer.
 
+Le mot de passe du vault peut etre charger en CLI ou via un fichier de mot de passe.
+
 Exemple de Playbook
 ----------------
 
