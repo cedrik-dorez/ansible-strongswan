@@ -1,12 +1,16 @@
 Role Strongswan
 ===============
 
-Un role pour automatiser la creation de tunnels VPN IPsec en utilisant la solution OpenSource Strongswan
+Un role pour automatiser la creation de tunnels VPN IPsec sur de multiples nodes en utilisant la solution OpenSource Strongswan.
 
 Prerequis
 ----------
 
-Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le protocole IPv4
+Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le protocole IPv4.
+
+L'interface public est designé enp0s3.
+
+L'interface privée est designé enp0s8.
 
 Variables de role
 -----------------
