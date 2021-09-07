@@ -11,10 +11,19 @@ Tester sur les distribution Ubuntu 20.04 (focal) et Debian 10 (buster) avec le p
 Variables de role
 -----------------
 
-Les variables de connections **ipsec_vpn_xxxx** sont déclarer dans le fichier defaut/main.yml et peuvent etre facilement surcharger en ligne de commande ou dans les differents emplacements de variables tes que group/variables.yml ou hosts/variables.yml.
+Les variables de connections *ipsec_vpn_xxxx* sont déclarer dans le fichier defaut/main.yml et peuvent etre facilement surcharger en ligne de commande ou dans les differents emplacements d'inventaires tels que group_vars ou host_vars.
 
-Le secret a partager **ipsec_vpn_psk** est declarer dans une variables intermediaire **vault_ipsec_vpn_psk** qui est crypter dans un fichier specifique creer avec la commande ansible-vault, ce fichiers peut etre placer dans les group_vars ou les host_vars.
+Le secret a partager *ipsec_vpn_psk* est declarer dans une variables intermediaire *vault_ipsec_vpn_psk* qui est crypter dans un fichier specifique creer avec la commande ansible-vault, ce fichiers peut etre placer dans les group_vars ou les host_vars.
 
+Un exemple avec notre variable *vault_ipsec_vpn_psk* :
+
+$ ansible-vault create group_vars/all/vault.yml
+
+On entre ensuite le mot de passe desirer pour le fichier vault ,**il ne s'agit pas du secret a partager mais du mot de passe du fichier vault contenant le psk !!!**
+
+Puis a l'interieur du fichier vault creer on declare la variable *vault_ipsec_vpn_psk* avec sa valeur désirer.
+
+Le mot de passe du vault peut etre charger en CLI ou via un fichier de mot de passe.
 
 Exemple de Playbook
 ----------------
